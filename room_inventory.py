@@ -1,27 +1,59 @@
 class RoomInventory:
-    __slots__ = ['defence_room_1', 'defence_room_2',
-                 'room_1', 'room_2', 'room_3', 'room_4',
-                 'room_5', 'room_6', 'room_7', 'room_8']
+    __slots__ = ['starting_defence_rooms', 'starting_rooms',
+                 'defence_rooms', 'rooms']
 
-    def __init__(self, defence_room_1, defence_room_2,
-                 room_1, room_2, room_3, room_4, room_5,
-                 room_6, room_7, room_8):
-        self.defence_room_1 = defence_room_1
-        self.defence_room_2 = defence_room_2
-        self.room_1 = room_1
-        self.room_2 = room_2
-        self.room_3 = room_3
-        self.room_4 = room_4
-        self.room_5 = room_5
-        self.room_6 = room_6
-        self.room_7 = room_7
-        self.room_8 = room_8
+    def __init__(self, starting_defence_rooms,
+                 starting_rooms):
+        self.starting_rooms = starting_rooms
+        self.starting_defence_rooms = starting_defence_rooms
+        self.defence_rooms = self._init_rooms()
+        self.rooms = self._init_defence_rooms()
 
-    def add_room(self, roomtype, build_over_room=None):
-        pass
+    def _init_rooms(self):
+        rooms = dict(room_1=None,
+                     room_2=None,
+                     room_3=None,
+                     room_4=None,
+                     room_5=None,
+                     room_6=None,
+                     room_7=None,
+                     room_8=None)
+
+        if self.starting_rooms:
+            rooms.update(self.starting_rooms)
+
+        return rooms
+
+    def _init_defence_rooms(self):
+        defence_rooms = dict(defence_room_1=None,
+                             defence_room_2=None)
+
+        if self.starting_defence_rooms:
+            defence_rooms.update(self.starting_defence_rooms)
+
+        return defence_rooms
+
+    def add_room(self, room, build_over_room=None):
+        if not build_over_room:
+            if not room.defense:
+                empty_room_key = self._choose_empty_room()
+                self.rooms[empty_room_key] = room
+            else:
+                empty_room_key = self._choose_empty_defence_room()
+                self.rooms[empty_room_key] = room
+        else:
+            self.rooms[build_over_room] = room
 
     def _choose_empty_room(self):
-        pass
+        empty_rooms = [k for k, v in self.rooms.items() if v is None]
+        if not empty_rooms:
+            raise ValueError("No empty rooms found")
+        first_empty_room = empty_rooms[0]
+        return first_empty_room
 
     def _choose_empty_defence_room(self):
-        pass
+        empty_rooms = [k for k, v in self.defence_rooms.items() if v is None]
+        if not empty_rooms:
+            raise ValueError("No empty defence rooms found")
+        first_empty_defence_room = empty_rooms[0]
+        return first_empty_defence_room

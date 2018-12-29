@@ -31,3 +31,8 @@ class Inventory:
     def trade_nitro_and_insect_for_nut(self, n_items=1):
         self.insects = self.insects - n_items
         self.nitrogen = self.nitrogen - n_items
+        self.nuts = self.nuts + n_items
+
+    def update_inventory_from_dict(self, inventory_dict):
+        current_amount = getattr(self, inventory_dict.key())
+        updated_amount = current_amount + inventory_dict.value()

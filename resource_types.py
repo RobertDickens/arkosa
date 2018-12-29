@@ -4,4 +4,3 @@ class ResourceType:
     POWER_CORE = 'power core'
     BOLT = 'bolt'
     NUT = 'nut'
-

@@ -9,16 +9,17 @@ class RoomBase:
         self.ability = None
         self.price = None
         self.stage = 1
+        self.defence = False
 
 
 # Default rooms
-class InsectProductionRoomOne(RoomBase):
+class InsectRoomOne(RoomBase):
     def __init__(self):
         super().__init__()
         self.produced_resource_type = ResourceType.INSECT
 
 
-class NitrogenProductionRoomOne(RoomBase):
+class NitrogrenRoomOne(RoomBase):
     def __init__(self):
         super().__init__()
         self.produced_resource_type = ResourceType.NITROGREN
@@ -40,6 +41,7 @@ class MoralRoomOne(RoomBase):
 class DefenceRoomOneFree(RoomBase):
     def __init__(self):
         super().__init__()
+        self.defense = True
 
 
 class NitrogrenRoomTwo(RoomBase):
@@ -118,6 +120,7 @@ class DefenceRoomOne(RoomBase):
         super().__init__()
         self.price = '1 bolt'
         self.ability = 'one defence'
+        self.defense = True
 
 
 class InsectRoomThree(RoomBase):
@@ -149,6 +152,7 @@ class DefenceRoomTwo(RoomBase):
         super().__init__()
         self.price = '2 bolt 1 nut'
         self.ability = 'two defence'
+        self.defense = True
 
 
 class NitrogenRoomFour(RoomBase):
