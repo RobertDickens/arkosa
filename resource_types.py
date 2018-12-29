@@ -1,7 +1,7 @@
-class ResourceTypes:
+class ResourceType:
     INSECT = 'insect'
     NITROGREN = 'nitrogen'
-    POWER = 'power'
+    POWER_CORE = 'power core'
     BOLT = 'bolt'
     NUT = 'nut'
 
