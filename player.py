@@ -20,7 +20,11 @@ class Player:
         self.people = []
 
     def trade_resources(self, input_resources, output_resource, n_items):
+        # Check resources
         for resource in input_resources:
+            if self.inventory[resource] - n_items < 0:
+                raise ValueError("Can't trade {resource}, insufficient amount in inventory".
+                                 format(resource=resource))
             self.inventory[resource] -= n_items
 
         self.inventory[output_resource] += n_items
@@ -47,4 +51,7 @@ class Player:
         self.rooms.add_room(new_room)
 
     def round_end_update(self):
-        pass
+        # Produce resources
+        produced_resources = self.rooms.produce_resources()
+        for resource, quantity in produced_resources.items():
+            self.inventory[resource] += quantity

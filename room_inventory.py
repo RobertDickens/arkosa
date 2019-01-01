@@ -6,8 +6,8 @@ class RoomInventory:
                  starting_rooms):
         self.starting_rooms = starting_rooms
         self.starting_defence_rooms = starting_defence_rooms
-        self.defence_rooms = self._init_rooms()
-        self.rooms = self._init_defence_rooms()
+        self.defence_rooms = self._init_defence_rooms()
+        self.rooms = self._init_rooms()
 
     def _init_rooms(self):
         rooms = dict(room_1=None,
@@ -43,6 +43,15 @@ class RoomInventory:
                 self.rooms[empty_room_key] = room
         else:
             self.rooms[build_over_room] = room
+
+    def produce_resources(self):
+        produced_resources = {}
+        occupied_rooms = [room for room in self.rooms.values() if room is not None]
+        for room in occupied_rooms:
+            if room.resource_production:
+                produced_resources.update(room.round_end_production())
+
+        return produced_resources
 
     def _choose_empty_room(self):
         empty_rooms = [k for k, v in self.rooms.items() if v is None]
