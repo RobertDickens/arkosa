@@ -7,8 +7,35 @@ class RoomBase:
         self.ability = None
         self.price = None
         self.stage = 1
-        self.defence = False
         self.resource_production = False
+
+
+class ResourceRoomBase:
+    def __init__(self):
+        self.powered = False
+        self.stage = 1
+        self.room_type = 'resource production'
+
+
+class MedicalRoomBase:
+    def __init__(self):
+        self.powered = False
+        self.stage = 1
+        self.room_type = 'medical'
+
+
+class DefenceBase:
+    def __init__(self):
+        self.powered = False
+        self.stage = 1
+        self.room_type = 'defence'
+
+
+class PointRoomBase:
+    def __init__(self):
+        self.powered = False
+        self.stage = 1
+        self.room_type = 'points'
 
 
 # Default rooms
