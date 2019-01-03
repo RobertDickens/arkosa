@@ -1,198 +1,196 @@
 from resource_types import ResourceType
-
-
-class RoomBase:
-    def __init__(self):
-        self.powered = False
-        self.ability = None
-        self.price = None
-        self.stage = 1
-        self.resource_production = False
+from room_types import RoomType
 
 
 class ResourceRoomBase:
     def __init__(self):
         self.powered = False
         self.stage = 1
-        self.room_type = 'resource production'
+        self.room_type = RoomType.RESOURCE_PRODUCTION
 
 
 class MedicalRoomBase:
     def __init__(self):
         self.powered = False
         self.stage = 1
-        self.room_type = 'medical'
+        self.room_type = RoomType.MEDICAL
 
 
 class DefenceBase:
     def __init__(self):
         self.powered = False
         self.stage = 1
-        self.room_type = 'defence'
+        self.room_type = RoomType.DEFENCE
 
 
-class PointRoomBase:
+class ReputationRoomBase:
     def __init__(self):
         self.powered = False
         self.stage = 1
-        self.room_type = 'points'
+        self.room_type = RoomType.REPUTATION
+        
+
+class MoralRoomBase:
+    def __init__(self):
+        self.powered = False
+        self.stage = 1
+        self.room_type = RoomType.MORALE
 
 
 # Default rooms
-class InsectRoomOne(RoomBase):
+class InsectRoomOne(ResourceRoomBase):
     def __init__(self):
         super().__init__()
-        self.resource_production = True
         self.produced_resources = {ResourceType.INSECT: 1}
 
     def round_end_production(self):
         return self.produced_resources
 
 
-class NitrogrenRoomOne(RoomBase):
+class NitrogrenRoomOne(ResourceRoomBase):
     def __init__(self):
         super().__init__()
-        self.resource_production = True
         self.produced_resources = {ResourceType.NITROGREN: 1}
 
 
-class MedicalRoomOne(RoomBase):
+class MedicalRoomOne(MedicalRoomBase):
     def __init__(self):
         super().__init__()
         self.ability = None
 
 
 # Stage 1 Rooms
-class MoralRoomOne(RoomBase):
+class MoralRoomOne(MoralRoomBase):
     def __init__(self):
         super().__init__()
 
 
-class DefenceRoomOneFree(RoomBase):
+class DefenceRoomOneFree(DefenceBase):
     def __init__(self):
         super().__init__()
         self.defense = True
 
 
-class NitrogrenRoomTwo(RoomBase):
+class NitrogrenRoomTwo(ResourceRoomBase):
     def __init__(self):
         super().__init__()
-        self.resource_production = True
-        self.price = '1 bolt'
+        self.price = {ResourceType.BOLT: 1}
         self.produced_resources = {ResourceType.NITROGREN: 1}
 
 
-class InsectRoomTwo(RoomBase):
+class InsectRoomTwo(ResourceRoomBase):
     def __init__(self):
         super().__init__()
-        self.resource_production = True
-        self.price = '1 bolt'
+        self.price = {ResourceType.BOLT: 1}
         self.produced_resources = {ResourceType.INSECT: 1}
 
 
-class BoltRoomOne(RoomBase):
+class BoltRoomOne(ResourceRoomBase):
     def __init__(self):
         super().__init__()
-        self.resource_production = True
-        self.price = '1 bolt'
+        self.price = {ResourceType.BOLT: 1}
         self.produced_resources = {ResourceType.BOLT: 1}
 
 
 # Stage 2 Rooms
-class MedicalRoomTwo(RoomBase):
+class MedicalRoomTwo(MedicalRoomBase):
     def __init__(self):
         super().__init__()
-        self.price = '2 bolt 1 nut'
+        self.price = {ResourceType.BOLT: 2,
+                      ResourceType.NUT: 1}
         self.ability = 'heal 2'
 
 
-class PointRoomOne(RoomBase):
+class ReputationRoomOne(ReputationRoomBase):
     def __init__(self):
         super().__init__()
-        self.price = '3 bolt 1 nut'
-        self.ability = 'plus one point'
+        self.price = {ResourceType.BOLT: 3,
+                      ResourceType.NUT: 1}
+        self.ability = 'plus one Reputation'
 
 
-class NutAndBoltRoom(RoomBase):
+class NutAndBoltRoom(ResourceRoomBase):
     def __init__(self):
         super().__init__()
-        self.resource_production = True
-        self.price = '2 bolt 1 nut'
+        self.price = {ResourceType.BOLT: 2,
+                      ResourceType.NUT: 1}
         self.produced_resources = {ResourceType.BOLT: 1,
                                    ResourceType.NUT: 1}
 
 
-class PowerCoreRoom(RoomBase):
+class PowerCoreRoom(ResourceRoomBase):
     def __init__(self):
         super().__init__()
-        self.resource_production = True
-        self.price = '3 bolt 1 nut'
+        self.price = {ResourceType.BOLT: 3,
+                      ResourceType.NUT: 1}
         self.produced_resources = {ResourceType.POWER_CORE: 1}
 
 
-class NitrogenRoomThree(RoomBase):
+class NitrogenRoomThree(ResourceRoomBase):
     def __init__(self):
         super().__init__()
-        self.resource_production = True
-        self.price = '2 bolt 1 nut'
+        self.price = {ResourceType.BOLT: 2,
+                      ResourceType.NUT: 1}
         self.produced_resources = {ResourceType.NITROGREN: 3}
 
 
-class MoraleRoomTwo(RoomBase):
+class MoraleRoomTwo(MoralRoomBase):
     def __init__(self):
         super().__init__()
         self.ability = 'increase morale 2'
 
 
-class DefenceRoomOne(RoomBase):
+class DefenceRoomOne(DefenceBase):
     def __init__(self):
         super().__init__()
-        self.price = '1 bolt'
+        self.price = {ResourceType.BOLT: 1}
         self.ability = 'one defence'
         self.defense = True
 
 
-class InsectRoomThree(RoomBase):
+class InsectRoomThree(ResourceRoomBase):
     def __init__(self):
         super().__init__()
-        self.resource_production = True
-        self.price = ' 2 bolt 1 nut'
+        self.price = {ResourceType.BOLT: 2,
+                      ResourceType.NUT: 1}
         self.produced_resources = {ResourceType.INSECT: 3}
 
 
 # Stage 3 Rooms
-class InsectRoomFour(RoomBase):
+class InsectRoomFour(ResourceRoomBase):
     def __init__(self):
         super().__init__()
-        self.resource_production = True
-        self.price = ' 3 bolt 2 nut'
+        self.price = {ResourceType.BOLT: 3,
+                      ResourceType.NUT: 1}
         self.produced_resources = {ResourceType.INSECT: 4}
 
 
-class PointRoomTwo(RoomBase):
+class ReputationRoomTwo(ReputationRoomBase):
     def __init__(self):
         super().__init__()
-        self.price = '3 bolt 1 nut'
-        self.ability = 'gain two reputation points'
+        self.price = {ResourceType.BOLT: 3,
+                      ResourceType.NUT: 1}
+        self.ability = 'gain two reputation Reputations'
 
 
-class DefenceRoomTwo(RoomBase):
+class DefenceRoomTwo(DefenceBase):
     def __init__(self):
         super().__init__()
-        self.price = '2 bolt 1 nut'
+        self.price = {ResourceType.BOLT: 2,
+                      ResourceType.NUT: 1}
         self.ability = 'two defence'
         self.defense = True
 
 
-class NitrogenRoomFour(RoomBase):
+class NitrogenRoomFour(ResourceRoomBase):
     def __init__(self):
         super().__init__()
-        self.resource_production = True
-        self.price = '3 bolt 2 nut'
+        self.price = {ResourceType.BOLT: 3,
+                      ResourceType.NUT: 2}
         self.produced_resources = {ResourceType.NITROGREN: 4}
 
 
-class MoraleRoomThree(RoomBase):
+class MoraleRoomThree(MoralRoomBase):
     def __init__(self):
         super().__init__()
         self.ability = 'increase morale 3'

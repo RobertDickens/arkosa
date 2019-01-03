@@ -3,3 +3,4 @@ class RoomType:
     MEDICAL = 'medical'
     REPUTATION = 'reputation'
     DEFENCE = 'defence'
+    MORALE = 'morale'
