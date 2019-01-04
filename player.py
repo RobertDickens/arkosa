@@ -48,6 +48,15 @@ class Player:
 
     def get_room(self, room_stockpile, room_number):
         new_room = room_stockpile.get_available_room(room_number)
+        # Check if affordable
+        for resource, quantity in new_room.items():
+            if self.inventory[resource] - quantity < 0:
+                raise ValueError("Can't trade {resource}, insufficient amount in inventory")
+
+        # Buy room
+        for resource, quantity in new_room.items():
+            self.inventory[resource] -= quantity
+
         self.rooms.add_room(new_room)
 
     def round_end_update(self):

@@ -68,7 +68,6 @@ class MoralRoomOne(MoralRoomBase):
 class DefenceRoomOneFree(DefenceBase):
     def __init__(self):
         super().__init__()
-        self.defense = True
 
 
 class NitrogrenRoomTwo(ResourceRoomBase):
@@ -96,6 +95,7 @@ class BoltRoomOne(ResourceRoomBase):
 class MedicalRoomTwo(MedicalRoomBase):
     def __init__(self):
         super().__init__()
+        self.stage = 2
         self.price = {ResourceType.BOLT: 2,
                       ResourceType.NUT: 1}
         self.ability = 'heal 2'
@@ -104,6 +104,7 @@ class MedicalRoomTwo(MedicalRoomBase):
 class ReputationRoomOne(ReputationRoomBase):
     def __init__(self):
         super().__init__()
+        self.stage = 2
         self.price = {ResourceType.BOLT: 3,
                       ResourceType.NUT: 1}
         self.ability = 'plus one Reputation'
@@ -112,6 +113,7 @@ class ReputationRoomOne(ReputationRoomBase):
 class NutAndBoltRoom(ResourceRoomBase):
     def __init__(self):
         super().__init__()
+        self.stage = 2
         self.price = {ResourceType.BOLT: 2,
                       ResourceType.NUT: 1}
         self.produced_resources = {ResourceType.BOLT: 1,
@@ -121,6 +123,7 @@ class NutAndBoltRoom(ResourceRoomBase):
 class PowerCoreRoom(ResourceRoomBase):
     def __init__(self):
         super().__init__()
+        self.stage = 2
         self.price = {ResourceType.BOLT: 3,
                       ResourceType.NUT: 1}
         self.produced_resources = {ResourceType.POWER_CORE: 1}
@@ -129,6 +132,7 @@ class PowerCoreRoom(ResourceRoomBase):
 class NitrogenRoomThree(ResourceRoomBase):
     def __init__(self):
         super().__init__()
+        self.stage = 2
         self.price = {ResourceType.BOLT: 2,
                       ResourceType.NUT: 1}
         self.produced_resources = {ResourceType.NITROGREN: 3}
@@ -137,20 +141,22 @@ class NitrogenRoomThree(ResourceRoomBase):
 class MoraleRoomTwo(MoralRoomBase):
     def __init__(self):
         super().__init__()
+        self.stage = 2
         self.ability = 'increase morale 2'
 
 
 class DefenceRoomOne(DefenceBase):
     def __init__(self):
         super().__init__()
+        self.stage = 2
         self.price = {ResourceType.BOLT: 1}
         self.ability = 'one defence'
-        self.defense = True
 
 
 class InsectRoomThree(ResourceRoomBase):
     def __init__(self):
         super().__init__()
+        self.stage = 2
         self.price = {ResourceType.BOLT: 2,
                       ResourceType.NUT: 1}
         self.produced_resources = {ResourceType.INSECT: 3}
@@ -160,6 +166,7 @@ class InsectRoomThree(ResourceRoomBase):
 class InsectRoomFour(ResourceRoomBase):
     def __init__(self):
         super().__init__()
+        self.stage = 3
         self.price = {ResourceType.BOLT: 3,
                       ResourceType.NUT: 1}
         self.produced_resources = {ResourceType.INSECT: 4}
@@ -168,6 +175,7 @@ class InsectRoomFour(ResourceRoomBase):
 class ReputationRoomTwo(ReputationRoomBase):
     def __init__(self):
         super().__init__()
+        self.stage = 3
         self.price = {ResourceType.BOLT: 3,
                       ResourceType.NUT: 1}
         self.ability = 'gain two reputation Reputations'
@@ -176,15 +184,16 @@ class ReputationRoomTwo(ReputationRoomBase):
 class DefenceRoomTwo(DefenceBase):
     def __init__(self):
         super().__init__()
+        self.stage = 3
         self.price = {ResourceType.BOLT: 2,
                       ResourceType.NUT: 1}
         self.ability = 'two defence'
-        self.defense = True
 
 
 class NitrogenRoomFour(ResourceRoomBase):
     def __init__(self):
         super().__init__()
+        self.stage = 3
         self.price = {ResourceType.BOLT: 3,
                       ResourceType.NUT: 2}
         self.produced_resources = {ResourceType.NITROGREN: 4}
@@ -193,4 +202,8 @@ class NitrogenRoomFour(ResourceRoomBase):
 class MoraleRoomThree(MoralRoomBase):
     def __init__(self):
         super().__init__()
+        self.stage = 3
         self.ability = 'increase morale 3'
+        self.price = {ResourceType.BOLT: 2,
+                      ResourceType.NUT: 1}
+

@@ -2,15 +2,22 @@ import random
 
 
 class RoomStockpile:
-    __slots__ = ['game_stage', 'room_deck', 'available_room_1',
-                 'available_room_2', 'available_room_3']
+    __slots__ = ['game_stage', 'player_count', 'room_deck',
+                 'available_room_1',  'available_room_2',
+                 'available_room_3']
 
     def __init__(self):
         self.game_stage = 1
+        self.player_count = 4
         self.room_deck = []
         self.available_room_1 = None
         self.available_room_2 = None
         self.available_room_3 = None
+        self.init_room_deck()
+
+        
+    def init_room_deck(self):
+        pass
 
     def increase_game_stage(self):
         self.game_stage += 1
