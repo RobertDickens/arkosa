@@ -1,4 +1,7 @@
 import random
+from room import InsectRoomOne, InsectRoomTwo, InsectRoomThree, InsectRoomFour, NitrogrenRoomOne, NitrogrenRoomTwo, \
+    NitrogenRoomThree, NitrogenRoomFour, ReputationRoomOne, ReputationRoomTwo, MoralRoomOne, MoraleRoomTwo,\
+    MoraleRoomThree, DefenceRoomOneFree, DefenceRoomOne, DefenceRoomTwo, MedicalRoomOne, MedicalRoomTwo
 
 
 class RoomStockpile:
@@ -15,7 +18,6 @@ class RoomStockpile:
         self.available_room_3 = None
         self.init_room_deck()
 
-        
     def init_room_deck(self):
         pass
 

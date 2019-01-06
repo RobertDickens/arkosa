@@ -206,4 +206,3 @@ class MoraleRoomThree(MoralRoomBase):
         self.ability = 'increase morale 3'
         self.price = {ResourceType.BOLT: 2,
                       ResourceType.NUT: 1}
-
