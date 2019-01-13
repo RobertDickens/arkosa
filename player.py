@@ -51,7 +51,7 @@ class Player:
         # Check if affordable
         for resource, quantity in new_room.items():
             if self.inventory[resource] - quantity < 0:
-                raise ValueError("Can't trade {resource}, insufficient amount in inventory")
+                raise ValueError("Can't trade buy room, insufficient amount in inventory")
 
         # Buy room
         for resource, quantity in new_room.items():
